@@ -3,7 +3,7 @@ import http from "../http-common";
 
 class SanctumService {
     csrfProtection(): Promise<AxiosResponse<any>> {
-        return http.get("/user");
+        return http.get("/sanctum/csrf-cookie");
     }
 }
 
