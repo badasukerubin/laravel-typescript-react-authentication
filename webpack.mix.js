@@ -15,4 +15,9 @@ mix.js("resources/js/app.tsx", "public/js")
     .postCss("resources/css/app.css", "public/css", [
         //
     ])
+    .webpackConfig({
+        resolve: {
+            extensions: [".ts", ".tsx"],
+        },
+    })
     .react();
