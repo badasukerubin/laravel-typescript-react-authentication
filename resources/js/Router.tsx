@@ -6,7 +6,7 @@ import Master from "./layouts/Master";
 import Login from "./views/Login";
 // import Register from "./views/Register";
 // import Dashboard from "./views/user/Dashboard";
-// import NotFound from "./views/NotFound";
+import NotFound from "./views/NotFound";
 
 export function App(): JSX.Element {
     return (
@@ -18,7 +18,7 @@ export function App(): JSX.Element {
                 {/* Authenticated */}
                 {/* <Route path="/dashboard" element={<Dashboard />} /> */}
             </Route>
-            {/* <Route path="*" element={<NotFound />} /> */}
+            <Route path="*" element={<NotFound />} />
         </Routes>
     );
 }
