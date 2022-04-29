@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate, NavigateFunction } from "react-router-dom";
 import AuthService from "../service/Auth.service";
 
@@ -15,23 +15,20 @@ const Register = (): JSX.Element => {
     let handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
         e.preventDefault();
         setIsFormSubmitting(true);
-        const response = AuthService.register({
+        AuthService.register({
             name,
             email,
             password,
             password_confirmation,
-        });
-        response
-            .then((message) => {
-                navigate("/dashboard");
+        })
+            .then((response) => {
+                navigate("/login");
             })
             .catch((e) => {
                 setError(e.response.data.message);
                 setIsFormSubmitting(false);
             });
     };
-
-    useEffect(() => {}, []);
 
     return (
         <div>

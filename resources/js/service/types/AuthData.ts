@@ -9,3 +9,9 @@ export type RegisterData = {
     password: string;
     password_confirmation: string;
 };
+
+export type UserData = {
+    id: string;
+    name: string;
+    email: string;
+};

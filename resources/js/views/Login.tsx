@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate, NavigateFunction } from "react-router-dom";
 import AuthService from "../service/Auth.service";
 
 const Login = (): JSX.Element => {
-    let [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
     let [isFormSubmitting, setIsFormSubmitting] = useState<boolean>(false);
     let [error, setError] = useState<string>();
     let [email, setEmail] = useState<string>("");
@@ -13,9 +12,8 @@ const Login = (): JSX.Element => {
     let handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
         e.preventDefault();
         setIsFormSubmitting(true);
-        const response = AuthService.login({ email, password });
-        response
-            .then((message) => {
+        AuthService.login({ email, password })
+            .then((response) => {
                 navigate("/dashboard");
             })
             .catch((e) => {
@@ -24,14 +22,12 @@ const Login = (): JSX.Element => {
             });
     };
 
-    useEffect(() => {}, []);
-
     return (
         <div>
             <div>
                 <div>
                     <h2>Log In To Your Account</h2>
-                    {isLoggedIn ? (
+                    {!isFormSubmitting ? (
                         <h5>Login successful, redirecting...</h5>
                     ) : (
                         ""
