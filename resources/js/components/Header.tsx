@@ -14,19 +14,21 @@ const Header = (): JSX.Element => {
     let location: Location = useLocation();
 
     useEffect(() => {
+        // 1.1
         AuthService.getUser()
             .then((response) => {
+                // 1.2
                 if (
                     location.pathname === "/login" ||
                     location.pathname === "/register"
                 ) {
                     navigate("/dashboard");
                 }
-                console.log(response);
 
                 setIsLoggedIn(true);
             })
             .catch((e) => {
+                // 1.3
                 if (
                     e.response.data.message === "Unauthenticated." &&
                     location.pathname === "/dashboard"

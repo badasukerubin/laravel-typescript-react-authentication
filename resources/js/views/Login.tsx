@@ -27,11 +27,6 @@ const Login = (): JSX.Element => {
             <div>
                 <div>
                     <h2>Log In To Your Account</h2>
-                    {!isFormSubmitting ? (
-                        <h5>Login successful, redirecting...</h5>
-                    ) : (
-                        ""
-                    )}
                     {error ? <h5>Error: {error}</h5> : ""}
                     <form onSubmit={handleSubmit}>
                         <div>

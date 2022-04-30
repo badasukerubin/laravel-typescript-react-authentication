@@ -2309,14 +2309,16 @@ var Header = function Header() {
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useNavigate)();
   var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useLocation)();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    // 1.1
     _service_Auth_service__WEBPACK_IMPORTED_MODULE_1__["default"].getUser().then(function (response) {
+      // 1.2
       if (location.pathname === "/login" || location.pathname === "/register") {
         navigate("/dashboard");
       }
 
-      console.log(response);
       setIsLoggedIn(true);
     })["catch"](function (e) {
+      // 1.3
       if (e.response.data.message === "Unauthenticated." && location.pathname === "/dashboard") {
         navigate("/login");
       }
@@ -2598,9 +2600,7 @@ var Login = function Login() {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
           children: "Log In To Your Account"
-        }), !isFormSubmitting ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h5", {
-          children: "Login successful, redirecting..."
-        }) : "", error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("h5", {
+        }), error ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("h5", {
           children: ["Error: ", error]
         }) : "", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("form", {
           onSubmit: handleSubmit,
